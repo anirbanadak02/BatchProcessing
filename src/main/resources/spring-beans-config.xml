@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean name="fileProcessingSkipListener" class="com.greater.listener.FileProcessingSkipListener" />
+	
+	<bean name="customerRowMapper" class="com.greater.rowmapper.CustomerRowMapper" />
+	<bean name="skipRowMapper" class="com.greater.rowmapper.SkipRowMapper" />
+	
+	<bean name="reportCustomerDetailsItemProcessor"
+		class="com.greater.processor.ReportCustomerDetailsItemProcessor" />
+	<bean name="customerItemProcessor" class="com.greater.processor.CustomerItemProcessor" />
+	
+	<bean name="batchProcesingUtil" class="com.greater.BatchProcessing.BatchProcesingUtil" />
+	
+	<bean name="csvReader" class="com.greater.reader.CSVReader" />
+	<bean name="databaseReader" class="com.greater.reader.DatabaseReader" />
+	
+	<bean name="textWriter" class="com.greater.writer.TextWriter" />
+	<bean name="csvWriter" class="com.greater.writer.CSVWriter" />
+	
+	<bean name="deletingTasklet" class="com.greater.BatchProcessing.DeletingTasklet">
+		<property name="directory" value="file:${TRANSACTION_PROCESSING}/pending/" />
+	</bean>
+</beans>
